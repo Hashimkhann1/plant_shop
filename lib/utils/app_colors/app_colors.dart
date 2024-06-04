@@ -11,5 +11,46 @@ class AppColors {
   static const Color whiteColor = Color(0xFFFFFFFF);
   static const Color blackColor = Color(0xFF000000);
   static const Color greyColor = Colors.grey;
+  static const Color yellowColor = Colors.yellow;
+
+
+  static List<Map> plants = [
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Indoor Plant",
+      "plantImage": 'images/indoor',
+      "price": "30"
+    },
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Indoor Plant",
+      "plantImage": 'images/indoor',
+      "price": "30"
+    },
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Indoor Plant",
+      "plantImage": 'images/indoor',
+      "price": "30"
+    },
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Indoor Plant",
+      "plantImage": 'images/indoor',
+      "price": "30"
+    },
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Indoor Plant",
+      "plantImage": 'images/indoor',
+      "price": "30"
+    },
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Indoor Plant",
+      "plantImage": 'images/indoor',
+      "price": "30"
+    },
+  ];
 
 }
