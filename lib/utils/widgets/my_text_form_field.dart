@@ -8,6 +8,7 @@ class MyTextFormFeild extends StatelessWidget {
   final bool obscureText;
   final Color? fillColor;
   final BorderSide borderSide;
+  final Color? focusedBorderColor;
   final double borderRadius;
   final TextEditingController? controller;
   const MyTextFormFeild(
@@ -20,6 +21,7 @@ class MyTextFormFeild extends StatelessWidget {
       this.borderSide = const BorderSide(
         color: Colors.black,
       ),
+        this.focusedBorderColor = AppColors.primaryColor,
       this.controller,
       this.borderRadius = 10});
 
@@ -39,7 +41,7 @@ class MyTextFormFeild extends StatelessWidget {
               borderRadius: BorderRadius.circular(borderRadius)
           ),
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.primaryColor),
+            borderSide: BorderSide(color: focusedBorderColor!),
             borderRadius: BorderRadius.circular(borderRadius)
         ),
         enabledBorder: OutlineInputBorder(
