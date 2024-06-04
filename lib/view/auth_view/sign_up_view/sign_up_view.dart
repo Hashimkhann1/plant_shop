@@ -100,7 +100,7 @@ class SignUpView extends StatelessWidget {
 
                       /// password textFormField
                       const MyTextFormFeild(
-                          prefixIcon: Icon(Icons.password,color: AppColors.primaryColor,),
+                          prefixIcon: Icon(Icons.lock,color: AppColors.primaryColor,),
                           hintText: "Password",
                           fillColor: AppColors.lightGreenColor,
                           borderRadius: 12,
