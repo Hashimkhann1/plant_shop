@@ -1,8 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop/utils/app_colors/app_colors.dart';
+import 'package:plant_shop/utils/widgets/my_appbar_widget.dart';
 import 'package:plant_shop/utils/widgets/my_text.dart';
 import 'package:plant_shop/utils/widgets/my_text_form_field.dart';
 import 'package:plant_shop/view/home_view/indoor_plant/indoor_plant.dart';
@@ -38,14 +37,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
 
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.whiteColor,
-        titleSpacing: 4,
-        title: Image.asset('images/trans.png',width: 40,height: 40,fit: BoxFit.contain,),
-        actions: [
-          IconButton(onPressed: (){}, icon: Icon(CupertinoIcons.shopping_cart))
-        ],
-      ),
+      appBar: MyAppBarWidget(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.03),
         child: Column(
