@@ -8,6 +8,7 @@ class MyText extends StatelessWidget {
   final TextAlign? textAlign;
   final int? maxLines;
   final TextDecoration? decoration;
+  final TextOverflow? overflow;
   const MyText(
       {super.key,
       required this.title,
@@ -16,7 +17,8 @@ class MyText extends StatelessWidget {
       this.fontWeight,
       this.textAlign,
         this.maxLines,
-      this.decoration});
+      this.decoration,
+      this.overflow});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class MyText extends StatelessWidget {
       title,
       textAlign: textAlign,
       maxLines: maxLines,
+      overflow: overflow,
       style: TextStyle(
         decoration: decoration,
         color: color,
