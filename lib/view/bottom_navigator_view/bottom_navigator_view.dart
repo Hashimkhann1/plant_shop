@@ -6,21 +6,22 @@ import 'package:plant_shop/utils/app_colors/app_colors.dart';
 import 'package:plant_shop/view/favourite_item_view/favourite_item_view.dart';
 import 'package:plant_shop/view/home_view/home_view.dart';
 import 'package:plant_shop/view/notification_view/notification_view.dart';
+import 'package:plant_shop/view/profile_view/profile_view.dart';
 
-class BotttomNavigatorView extends StatefulWidget {
-  const BotttomNavigatorView({super.key});
+class BottomNavigatorView extends StatefulWidget {
+  const BottomNavigatorView({super.key});
 
   @override
-  State<BotttomNavigatorView> createState() => _BotttomNavigatorViewState();
+  State<BottomNavigatorView> createState() => _BottomNavigatorViewState();
 }
 
-class _BotttomNavigatorViewState extends State<BotttomNavigatorView> {
+class _BottomNavigatorViewState extends State<BottomNavigatorView> {
 
    List allViews = [
    const HomeView(),
     const FavouriteItemView(),
     const NotificationView(),
-    const HomeView(),
+     ProfileView(),
   ];
 
    int selectedViewIndex = 0;
