@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:plant_shop/utils/app_colors/app_colors.dart';
-import 'package:plant_shop/utils/widgets/my_text.dart';
-import 'package:plant_shop/utils/widgets/my_text_button.dart';
-import 'package:plant_shop/utils/widgets/my_text_form_field.dart';
-import 'package:plant_shop/view/auth_view/sign_up_view/sign_up_view.dart';
+import '../../../utils/view.dart';
 
 class SignInView extends StatelessWidget {
-  const SignInView({super.key});
+  SignInView({super.key});
+
+  final _formKey = GlobalKey<FormState>();
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,26 +51,45 @@ class SignInView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * 0.04),
                   child: Form(
+                    key: _formKey,
                       child: Column(
                     children: [
-                      const MyTextFormFeild(
-                        prefixIcon: Icon(Icons.email,color: AppColors.primaryColor,),
+                      MyTextFormFeild(
+                        controller: emailController,
+                        prefixIcon: const Icon(Icons.email,color: AppColors.primaryColor,),
                         hintText: "Email",
                         fillColor: AppColors.lightGreenColor,
                         borderRadius: 12,
                         borderSide:
-                            BorderSide(color: AppColors.lightGreenColor),
+                        const BorderSide(color: AppColors.lightGreenColor),
+                        validator: (value) {
+                          if(value!.isEmpty){
+                            return "Enter email";
+                          }else if(!value.contains("@gmail.com")){
+                            return "Invalid email";
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(
                         height: height * 0.02,
                       ),
-                      const MyTextFormFeild(
-                          prefixIcon: Icon(Icons.lock,color: AppColors.primaryColor,),
+                      MyTextFormFeild(
+                        controller: passwordController,
+                          obscureText: true,
+                          prefixIcon: const Icon(Icons.lock,color: AppColors.primaryColor,),
                           hintText: "Password",
                           fillColor: AppColors.lightGreenColor,
                           borderRadius: 12,
                           borderSide:
-                              BorderSide(color: AppColors.lightGreenColor)),
+                          const BorderSide(color: AppColors.lightGreenColor),
+                        validator: (value) {
+                          if(value!.isEmpty){
+                            return "Enter password";
+                          }
+                          return null;
+                        },
+                      ),
                       SizedBox(
                         height: height * 0.004,
                       ),
@@ -101,6 +120,12 @@ class SignInView extends StatelessWidget {
                       width: width * 0.90,
                       height: 46,
                       alignment: Alignment.center,
+                      onTap: () {
+                        if(_formKey.currentState!.validate()){
+                          print("majh >>>>>>>>>>>>>>");
+                          AuthViewModel().signIn(context, emailController.text, passwordController.text);
+                        }
+                      },
                     ),
                     SizedBox(
                       height: height * 0.02,
@@ -122,7 +147,7 @@ class SignInView extends StatelessWidget {
                           textColor: AppColors.primaryColor,
                           fontWeight: FontWeight.w600,
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpView()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpView()));
                           },
                         )
                       ],
