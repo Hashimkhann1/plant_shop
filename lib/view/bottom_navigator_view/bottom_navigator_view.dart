@@ -1,12 +1,6 @@
 
-
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:plant_shop/utils/app_colors/app_colors.dart';
-import 'package:plant_shop/view/favourite_item_view/favourite_item_view.dart';
-import 'package:plant_shop/view/home_view/home_view.dart';
-import 'package:plant_shop/view/notification_view/notification_view.dart';
-import 'package:plant_shop/view/profile_view/profile_view.dart';
+import '../../utils/view.dart';
 
 class BottomNavigatorView extends StatefulWidget {
   const BottomNavigatorView({super.key});
@@ -21,7 +15,7 @@ class _BottomNavigatorViewState extends State<BottomNavigatorView> {
    const HomeView(),
     const FavouriteItemView(),
     const NotificationView(),
-     ProfileView(),
+     const ProfileView(),
   ];
 
    int selectedViewIndex = 0;
