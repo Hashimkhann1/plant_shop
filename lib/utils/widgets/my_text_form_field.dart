@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:plant_shop/utils/app_colors/app_colors.dart';
+import '../view.dart';
 
 class MyTextFormFeild extends StatelessWidget {
   final String? hintText;
@@ -11,6 +10,8 @@ class MyTextFormFeild extends StatelessWidget {
   final Color? focusedBorderColor;
   final double borderRadius;
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
+
   const MyTextFormFeild(
       {super.key,
       required this.hintText,
@@ -23,7 +24,8 @@ class MyTextFormFeild extends StatelessWidget {
       ),
         this.focusedBorderColor = AppColors.primaryColor,
       this.controller,
-      this.borderRadius = 10});
+      this.borderRadius = 10,
+      this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +51,7 @@ class MyTextFormFeild extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius)
         ),
       ),
+      validator: validator,
     );
   }
 }
