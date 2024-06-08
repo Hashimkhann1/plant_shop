@@ -18,11 +18,16 @@ class FavouriteItemView extends StatelessWidget {
       backgroundColor: AppColors.whiteColor,
       appBar: const MyAppBarWidget(),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: height * 0.02,),
 
           /// first heading
-          const MyText(title: "Your Favourite Plants",fontSize: 20,fontWeight: FontWeight.w600,color: AppColors.primaryColor,),
+          Padding(
+            padding: EdgeInsets.only(left: width * 0.026),
+            child: const MyText(title: "Your Favourite Plants",fontSize: 20,fontWeight: FontWeight.w600,color: AppColors.primaryColor,),
+          ),
+          SizedBox(height: height * 0.004,),
 
           /// All Favourite Items
           Expanded(
