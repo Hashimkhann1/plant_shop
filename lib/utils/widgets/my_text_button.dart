@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plant_shop/utils/app_colors/app_colors.dart';
 import 'package:plant_shop/utils/widgets/my_text.dart';
 
 class MyTextButton extends StatelessWidget {
@@ -13,6 +14,7 @@ class MyTextButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final AlignmentGeometry? alignment;
   final void Function()? onTap;
+  final bool isLoading;
   const MyTextButton(
       {super.key,
       required this.title,
@@ -25,7 +27,8 @@ class MyTextButton extends StatelessWidget {
       this.width,
       this.padding,
       this.alignment,
-      this.onTap});
+      this.onTap,
+      this.isLoading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,7 @@ class MyTextButton extends StatelessWidget {
             color: backgroundColor,
           borderRadius: BorderRadius.circular(borderRadius)
         ),
-        child: MyText(
+        child: isLoading ? CircularProgressIndicator(color: AppColors.whiteColor,) : MyText(
           title: title,
           color: textColor,
           fontWeight: fontWeight,
