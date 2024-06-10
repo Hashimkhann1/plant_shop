@@ -1,3 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plant_shop/view_model/bloc/loadin_bloc/loading_bloc/loading_bloc.dart';
+import 'package:plant_shop/view_model/bloc/loadin_bloc/loading_bloc_state/loading_bloc_state.dart';
+
 import '../../../utils/view.dart';
 
 class SignUpView extends StatelessWidget {
@@ -174,23 +178,26 @@ class SignUpView extends StatelessWidget {
                 /// sign up and already have an accounty buttons
                 Column(
                   children: [
-                    /// sign in button
-                    MyTextButton(
-                      title: "Sign up",
-                      textColor: AppColors.whiteColor,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      backgroundColor: AppColors.primaryColor,
-                      borderRadius: 30,
-                      width: width * 0.90,
-                      height: 46,
-                      alignment: Alignment.center,
-                      onTap: () {
-                        if(_formKey.currentState!.validate()){
-                          AuthViewModel().registerUser(context, nameController.text, emailController.text, passwordController.text);
-                        }
-                      },
-                    ),
+                    /// sign up button
+                    BlocBuilder<LoadingBloc , LoadingBlocState>(builder: (context , state) {
+                      return MyTextButton(
+                        title: "Sign up",
+                        textColor: AppColors.whiteColor,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                        backgroundColor: AppColors.primaryColor,
+                        borderRadius: 30,
+                        width: width * 0.90,
+                        height: 46,
+                        alignment: Alignment.center,
+                        isLoading: state.isLoading,
+                        onTap: () {
+                          if(_formKey.currentState!.validate()){
+                            AuthViewModel().registerUser(context, nameController.text, emailController.text, passwordController.text);
+                          }
+                        },
+                      );
+                    }),
                     SizedBox(
                       height: height * 0.02,
                     ),
