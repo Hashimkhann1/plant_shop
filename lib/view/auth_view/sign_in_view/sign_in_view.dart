@@ -1,3 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plant_shop/view_model/bloc/loadin_bloc/loading_bloc/loading_bloc.dart';
+import 'package:plant_shop/view_model/bloc/loadin_bloc/loading_bloc_state/loading_bloc_state.dart';
+
 import '../../../utils/view.dart';
 
 class SignInView extends StatelessWidget {
@@ -110,23 +114,25 @@ class SignInView extends StatelessWidget {
                 Column(
                   children: [
                     /// sign in button
-                    MyTextButton(
-                      title: "Sign in",
-                      textColor: AppColors.whiteColor,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      backgroundColor: AppColors.primaryColor,
-                      borderRadius: 30,
-                      width: width * 0.90,
-                      height: 46,
-                      alignment: Alignment.center,
-                      onTap: () {
-                        if(_formKey.currentState!.validate()){
-                          print("majh >>>>>>>>>>>>>>");
-                          AuthViewModel().signIn(context, emailController.text, passwordController.text);
-                        }
-                      },
-                    ),
+                    BlocBuilder<LoadingBloc , LoadingBlocState>(builder: (context , state) {
+                      return MyTextButton(
+                        title: "Sign in",
+                        textColor: AppColors.whiteColor,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                        backgroundColor: AppColors.primaryColor,
+                        borderRadius: 30,
+                        width: width * 0.90,
+                        height: 46,
+                        alignment: Alignment.center,
+                        isLoading: state.isLoading,
+                        onTap: () {
+                          if(_formKey.currentState!.validate()){
+                            AuthViewModel().signIn(context, emailController.text, passwordController.text);
+                          }
+                        },
+                      );
+                    }),
                     SizedBox(
                       height: height * 0.02,
                     ),
