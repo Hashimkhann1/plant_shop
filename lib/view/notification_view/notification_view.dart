@@ -20,9 +20,31 @@ class NotificationView extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.03),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: height * 0.03,),
+            Padding(
+              padding: EdgeInsets.only(left: width * 0.012),
+              child: MyText(title: "Notificatioins",fontSize: 22,fontWeight: FontWeight.w600,color: AppColors.primaryColor,),
+            ),
             SizedBox(height: height * 0.02,),
-            MyText(title: "Notificatioins",fontSize: 22,fontWeight: FontWeight.w600,color: AppColors.primaryColor,)
+
+            /// notification card
+            Expanded(
+              child: ListView.builder(
+                itemCount: 12,
+                  itemBuilder: (context , index) {
+                  return Card(
+                    color: AppColors.whiteColor,
+                    elevation: 4,
+                    child: ListTile(
+                      leading: Image.asset('images/indoor1.jpeg',fit: BoxFit.cover,),
+                      title: MyText(title: "Bamboo Plant",fontSize: 17,fontWeight: FontWeight.w500,color: AppColors.ligthGreyColor,),
+                      subtitle: MyText(title: "You order is successfully placed.",maxLines: 1,overflow: TextOverflow.ellipsis,),
+                    ),
+                  );
+                  }),
+            )
           ],
         ),
       ),
