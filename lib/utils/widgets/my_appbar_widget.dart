@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:plant_shop/utils/app_colors/app_colors.dart';
 
 class MyAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBarWidget({super.key});
+  final bool automaticallyImplyLeading;
+  const MyAppBarWidget({super.key,this.automaticallyImplyLeading = false});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.whiteColor,
       titleSpacing: 4,
-      automaticallyImplyLeading: false,
+      centerTitle: false,
+      automaticallyImplyLeading: automaticallyImplyLeading,
       title: Image.asset(
         'images/trans.png',
         width: 45,
