@@ -5,3 +5,4 @@
 - Auth is completed
 - Side bar is added for admin in web
 - Working for web view for admin
+- Working on getting imgae for add item
