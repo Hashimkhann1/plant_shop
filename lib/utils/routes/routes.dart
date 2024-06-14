@@ -18,6 +18,8 @@ class Routes {
         return MaterialPageRoute(builder: (context) => const HomeView());
       case RoutesName.favouriteView:
         return MaterialPageRoute(builder: (context) => const FavouriteItemView());
+      case RoutesName.addItemview:
+        return MaterialPageRoute(builder: (context) => const AddItemView());
       case RoutesName.notificationView:
         return MaterialPageRoute(builder: (context) => const NotificationView());
       case RoutesName.profileView:
