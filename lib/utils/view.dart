@@ -14,3 +14,4 @@ export 'package:plant_shop/utils/app_colors/app_colors.dart';
 export 'package:plant_shop/utils/widgets/my_text_button.dart';
 export 'package:plant_shop/utils/widgets/my_text_form_field.dart';
 export 'package:plant_shop/view_model/auth_view_model/auth_view_model.dart';
+export 'package:plant_shop/view/add_item_view/add_item_view.dart';
