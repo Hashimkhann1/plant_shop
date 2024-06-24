@@ -4,6 +4,7 @@ class MyTextFormFeild extends StatelessWidget {
   final String? hintText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final int? maxLines;
   final bool obscureText;
   final Color? fillColor;
   final BorderSide borderSide;
@@ -17,6 +18,7 @@ class MyTextFormFeild extends StatelessWidget {
       required this.hintText,
         this.prefixIcon,
       this.suffixIcon,
+        this.maxLines = 1,
       this.obscureText = false,
       this.fillColor = Colors.white,
       this.borderSide = const BorderSide(
@@ -32,6 +34,7 @@ class MyTextFormFeild extends StatelessWidget {
     return TextFormField(
       obscureText: obscureText,
       controller: controller,
+      maxLines: maxLines,
       decoration: InputDecoration(
         prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
