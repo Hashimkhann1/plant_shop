@@ -8,6 +8,11 @@ class AddItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.whiteColor,
@@ -25,13 +30,38 @@ class AddItemView extends StatelessWidget {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          MyTextFormFeild(hintText: "Title"),
-          MyTextFormFeild(hintText: "Descriition"),
-          MyTextFormFeild(hintText: "Descriition"),
-        ],
+      body: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+
+            Container(
+              width: width * 0.3,
+              height: height * 0.44,
+              decoration: BoxDecoration(
+                color: Colors.green,
+                borderRadius: BorderRadius.circular(12)
+              ),
             ),
+
+            Container(
+              width: width * 0.3,
+              child: Column(
+                children: [
+                  SizedBox(height: height * 0.01,),
+                  MyTextFormFeild(hintText: "Title"),
+                  SizedBox(height: height * 0.02,),
+                  MyTextFormFeild(hintText: "Descriition",maxLines: 4,),
+                ],
+              ),
+            )
+          ],
+              ),
+      ),
     );
   }
 }
