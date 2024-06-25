@@ -23,7 +23,7 @@ class Routes {
       case RoutesName.notificationView:
         return MaterialPageRoute(builder: (context) => const NotificationView());
       case RoutesName.profileView:
-        return MaterialPageRoute(builder: (context) => const ProfileView());
+        return MaterialPageRoute(builder: (context) => ProfileView());
       default:
         return MaterialPageRoute(builder: (context) => const Scaffold(
           body: Center(

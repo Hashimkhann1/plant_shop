@@ -15,7 +15,7 @@ class _BottomNavigatorViewState extends State<BottomNavigatorView> {
    const HomeView(),
     const FavouriteItemView(),
     const NotificationView(),
-     const ProfileView(),
+     ProfileView(),
   ];
 
    int selectedViewIndex = 0;

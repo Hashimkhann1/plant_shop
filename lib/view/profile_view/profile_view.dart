@@ -1,5 +1,6 @@
 
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop/utils/app_colors/app_colors.dart';
@@ -10,7 +11,9 @@ import 'package:plant_shop/utils/widgets/profile_card_widget.dart';
 import 'package:plant_shop/view_model/auth_view_model/auth_view_model.dart';
 
 class ProfileView extends StatelessWidget {
-  const ProfileView({super.key});
+  ProfileView({super.key});
+
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +37,11 @@ class ProfileView extends StatelessWidget {
                 SizedBox(height: height * 0.06,),
 
                 /// name
-                ProfileCardWidget(cardTitle: "M Hashim",icon: CupertinoIcons.person,),
+                ProfileCardWidget(cardTitle: _auth.currentUser!.email.toString().split('@')[0],icon: CupertinoIcons.person,),
                 SizedBox(height: height * 0.016,),
 
                 /// gmail
-                ProfileCardWidget(cardTitle: "hashim@gmai.com",icon: CupertinoIcons.mail,),
+                ProfileCardWidget(cardTitle: _auth.currentUser!.email.toString(),icon: CupertinoIcons.mail,),
                 SizedBox(height: height * 0.016,),
 
                 /// phone num

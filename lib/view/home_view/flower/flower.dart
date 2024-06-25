@@ -35,6 +35,7 @@ class FlowerPlants extends StatelessWidget {
               child: Column(
                 children: [
                   /// plant image
+                  ///
                   Hero(tag: 'detailItem$index', child: Image.asset("${AppColors.flowerPlants[index]['plantImage']}${index+1}.jpeg",fit: BoxFit.cover,height: Responsive.isMobile(context) ? 136 : height * 0.15,)),
 
                   /// plant name

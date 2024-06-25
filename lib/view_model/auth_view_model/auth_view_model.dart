@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plant_shop/utils/responsive/responsive.dart';
+import 'package:plant_shop/utils/routes/routes_name.dart';
 import 'package:plant_shop/utils/utils/utils.dart';
 import 'package:plant_shop/view/auth_view/sign_in_view/sign_in_view.dart';
 import 'package:plant_shop/view/bottom_navigator_view/bottom_navigator_view.dart';
@@ -37,7 +39,7 @@ class AuthViewModel {
         saveUserData(userName, email);
         Utils().toastMessage("User Resister Successfully");
         context.read<LoadingBloc>().add(SetLoading());
-        Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavigatorView()));
+        Navigator.pushNamedAndRemoveUntil(context, Responsive.isDesktop(context) ? RoutesName.homeView : RoutesName.bottomNavigatorView , (route) => false);
       });
     }on FirebaseAuthException catch(error) {
       context.read<LoadingBloc>().add(SetLoading());
@@ -57,8 +59,7 @@ class AuthViewModel {
 
         /// stoping loading
         context.read<LoadingBloc>().add(SetLoading());
-        Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavigatorView()));
-      });
+        Navigator.pushNamedAndRemoveUntil(context, Responsive.isDesktop(context) ? RoutesName.homeView : RoutesName.bottomNavigatorView , (route) => false);      });
     }on FirebaseAuthException catch(error){
       /// stoping loading
       context.read<LoadingBloc>().add(SetLoading());
