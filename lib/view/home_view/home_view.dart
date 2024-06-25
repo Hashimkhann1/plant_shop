@@ -5,6 +5,7 @@ import 'package:plant_shop/utils/widgets/my_appbar_widget.dart';
 import 'package:plant_shop/utils/widgets/my_text.dart';
 import 'package:plant_shop/utils/widgets/my_text_form_field.dart';
 import 'package:plant_shop/utils/widgets/side_bar_widget/side_bar_widget.dart';
+import 'package:plant_shop/view/home_view/flower/flower.dart';
 import 'package:plant_shop/view/home_view/indoor_plant/indoor_plant.dart';
 
 class HomeView extends StatefulWidget {
@@ -98,8 +99,8 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                       controller: _tabController,
                         children: const [
                           IndoorPlant(),
-                          MyText(title: "2"),
-                          MyText(title: "3"),
+                          FlowerPlants(),
+                          MyText(title: "working on ui"),
                         ]
                     ),
                   )

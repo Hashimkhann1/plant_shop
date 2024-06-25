@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop/utils/app_colors/app_colors.dart';
+import 'package:plant_shop/utils/responsive/responsive.dart';
 import 'package:plant_shop/utils/widgets/my_appbar_widget.dart';
 import 'package:plant_shop/utils/widgets/my_text.dart';
 import 'package:plant_shop/utils/widgets/profile_card_widget.dart';
@@ -23,60 +24,63 @@ class ProfileView extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.03),
         child: Center(
-          child: Column(
-            children: [
-              SizedBox(height: height * 0.06,),
-              /// profile image
-              CircleAvatar(radius: 50,backgroundColor: AppColors.primaryColor,),
-              SizedBox(height: height * 0.06,),
+          child: Container(
+            width: Responsive.isDesktop(context) ? width * 0.42 : width,
+            child: Column(
+              children: [
+                SizedBox(height: height * 0.06,),
+                /// profile image
+                CircleAvatar(radius: Responsive.isDesktop(context) ? 74 : 50,backgroundColor: AppColors.primaryColor,),
+                SizedBox(height: height * 0.06,),
 
-              /// name
-              ProfileCardWidget(cardTitle: "M Hashim",icon: CupertinoIcons.person,),
-              SizedBox(height: height * 0.016,),
+                /// name
+                ProfileCardWidget(cardTitle: "M Hashim",icon: CupertinoIcons.person,),
+                SizedBox(height: height * 0.016,),
 
-              /// gmail
-              ProfileCardWidget(cardTitle: "hashim@gmai.com",icon: CupertinoIcons.mail,),
-              SizedBox(height: height * 0.016,),
+                /// gmail
+                ProfileCardWidget(cardTitle: "hashim@gmai.com",icon: CupertinoIcons.mail,),
+                SizedBox(height: height * 0.016,),
 
-              /// phone num
-              ProfileCardWidget(cardTitle: "0313000000",icon: CupertinoIcons.phone,),
-              SizedBox(height: height * 0.016,),
+                /// phone num
+                ProfileCardWidget(cardTitle: "0313000000",icon: CupertinoIcons.phone,),
+                SizedBox(height: height * 0.016,),
 
-              /// address
-              Container(
-                width: width * 0.90,
-                padding: EdgeInsets.symmetric(horizontal: width * 0.07,vertical: 5),
-                decoration: BoxDecoration(
-                    color: AppColors.whiteColor,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 3,
-                        blurRadius: 20,
-                        offset: Offset(0, 10), // changes position of shadow
-                      ),
-                    ]
+                /// address
+                Container(
+                  width: width * 0.90,
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.07,vertical: 5),
+                  decoration: BoxDecoration(
+                      color: AppColors.whiteColor,
+                      borderRadius: BorderRadius.circular(5),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 3,
+                          blurRadius: 20,
+                          offset: Offset(0, 10), // changes position of shadow
+                        ),
+                      ]
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MyText(title: "Address:",color: AppColors.primaryColor,fontSize: 15,fontWeight: FontWeight.w500,),
+                      MyText(title: "Charsadda Sardhair Gull abad pull " ,maxLines: 2,overflow: TextOverflow.ellipsis,)
+                    ],
+                  ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MyText(title: "Address:",color: AppColors.primaryColor,fontSize: 15,fontWeight: FontWeight.w500,),
-                    MyText(title: "Charsadda Sardhair Gull abad pull " ,maxLines: 2,overflow: TextOverflow.ellipsis,)
-                  ],
-                ),
-              ),
-              SizedBox(height: height * 0.016,),
+                SizedBox(height: height * 0.016,),
 
-              /// log out
-              InkWell(
-                onTap: (){
+                /// log out
+                InkWell(
+                  onTap: (){
 
-                  AuthViewModel().signOut(context);
+                    AuthViewModel().signOut(context);
 
-                },
-                  child: ProfileCardWidget(cardTitle: "Log out",icon: Icons.logout,)),
-            ],
+                  },
+                    child: ProfileCardWidget(cardTitle: "Log out",icon: Icons.logout,)),
+              ],
+            ),
           ),
         ),
       ),

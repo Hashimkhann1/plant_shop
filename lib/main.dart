@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           // home: SplashView(),
-          initialRoute: RoutesName.splashView,
+          initialRoute: RoutesName.homeView,
           onGenerateRoute: Routes.generateRoute,
         )
     );

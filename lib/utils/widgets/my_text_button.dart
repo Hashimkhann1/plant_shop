@@ -26,7 +26,7 @@ class MyTextButton extends StatelessWidget {
       this.height,
       this.width,
       this.padding,
-      this.alignment,
+      this.alignment = Alignment.center,
       this.onTap,
       this.isLoading = false});
 

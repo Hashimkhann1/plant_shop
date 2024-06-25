@@ -30,37 +30,41 @@ class AddItemView extends StatelessWidget {
           ],
         ),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
+      body: Center(
+        child: Container(
+          width: width * 0.3,
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                alignment: Alignment.center,
+                height: height * 0.44,
+                decoration: BoxDecoration(
+                  color: Colors.white60,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: AppColors.primaryColor,width: 3)
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MyText(title: "Click to select imaeg",fontSize: 16,),
+                    Icon(Icons.image,size: 50,color: AppColors.primaryColor,)
+                  ],
+                ),
+              ),
 
+              SizedBox(height: height * 0.01,),
+              MyTextFormFeild(hintText: "Title"),
+              SizedBox(height: height * 0.02,),
+              MyTextFormFeild(hintText: "Descriition",maxLines: 4,),
+              SizedBox(height: height * 0.01,),
+
+              /// add item button
+              MyTextButton(title: "Add Item",backgroundColor: AppColors.primaryColor,textColor: Colors.white,fontSize: 17,fontWeight: FontWeight.w600, width: width,height: height * 0.05,borderRadius: 8,),
+            ],
+                ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-
-            Container(
-              width: width * 0.3,
-              height: height * 0.44,
-              decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(12)
-              ),
-            ),
-
-            Container(
-              width: width * 0.3,
-              child: Column(
-                children: [
-                  SizedBox(height: height * 0.01,),
-                  MyTextFormFeild(hintText: "Title"),
-                  SizedBox(height: height * 0.02,),
-                  MyTextFormFeild(hintText: "Descriition",maxLines: 4,),
-                ],
-              ),
-            )
-          ],
-              ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_shop/utils/app_colors/app_colors.dart';
+import 'package:plant_shop/utils/responsive/responsive.dart';
 import 'package:plant_shop/utils/widgets/my_text.dart';
 import 'package:plant_shop/utils/widgets/my_text_button.dart';
 
@@ -28,7 +29,7 @@ class ItemDetailView extends StatelessWidget {
           /// item Image
           Hero(
             tag: heroTag!,
-            child: Image.asset(itemImage,fit: BoxFit.contain,width: width,height: height * 0.36,)
+            child: Center(child: Image.asset(itemImage,fit: BoxFit.contain,width: Responsive.isDesktop(context) ? width * 0.22 : width,height: Responsive.isDesktop(context) ? height * 0.44 : height * 0.36,))
           ),
 
 
@@ -36,7 +37,7 @@ class ItemDetailView extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: Container(
-              width: width * 0.24,
+              width: Responsive.isDesktop(context) || Responsive.isTablet(context)? width * 0.11 : width * 0.20,
               margin: EdgeInsets.only(right: 12.0, top: 8.0),
               decoration: BoxDecoration(
                   color: AppColors.primaryColor,
@@ -101,11 +102,14 @@ class ItemDetailView extends StatelessWidget {
                 SizedBox(height: height * 0.01,),
 
                 /// item descripition
-                MyText(
-                    title:
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual"
-                        "form of a document or a typeface without relying on meaningful content form of a document or a typeface without relying on meaningful content",
-                  fontSize: 16,color: Colors.grey.shade700,),
+                Container(
+                  width: Responsive.isDesktop(context) ? width * 0.54 : width,
+                  child: MyText(
+                      title:
+                          "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual"
+                          "form of a document or a typeface without relying on meaningful content form of a document or a typeface without relying on meaningful content",
+                    fontSize: 16,color: Colors.grey.shade700,),
+                ),
                 SizedBox(height: height * 0.015,),
 
                 /// item sun light and temperature
@@ -138,10 +142,10 @@ class ItemDetailView extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: height * 0.02,),
+                SizedBox(height: Responsive.isDesktop(context) ? height * 0.06 : height * 0.02,),
 
                 /// Add to Cart Button
-                MyTextButton(title: "Add to cart",fontSize: 20 , fontWeight: FontWeight.w500 ,backgroundColor: AppColors.primaryColor,textColor: AppColors.whiteColor,width: width * 0.90,height: height * 0.06,borderRadius: 20,alignment: Alignment.center,)
+                Center(child: MyTextButton(title: "Add to cart",fontSize: 20 , fontWeight: FontWeight.w500 ,backgroundColor: AppColors.primaryColor,textColor: AppColors.whiteColor,width: Responsive.isDesktop(context) ? width * 0.46 : width * 0.90,height: height * 0.06,borderRadius: 20,alignment: Alignment.center,))
               ],
             ),
           )

@@ -54,4 +54,43 @@ class AppColors {
     },
   ];
 
+  static List<Map> flowerPlants = [
+    {
+      "plantName" : "Flower Plant",
+      "Type" : "Flower Plant",
+      "plantImage": 'images/flower',
+      "price": "30"
+    },
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Flower Plant",
+      "plantImage": 'images/flower',
+      "price": "40"
+    },
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Flower Plant",
+      "plantImage": 'images/flower',
+      "price": "60"
+    },
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Flower Plant",
+      "plantImage": 'images/flower',
+      "price": "20"
+    },
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Flower Plant",
+      "plantImage": 'images/flower',
+      "price": "90"
+    },
+    {
+      "plantName" : "Bamboo Plant",
+      "Type" : "Flower Plant",
+      "plantImage": 'images/flower',
+      "price": "30"
+    },
+  ];
+
 }
