@@ -87840,7 +87840,7 @@ bC(){this.rd()
 this.hS(new A.apT(this))}}
 A.Ll.prototype={
 J(a){var s=null,r=A.b([new A.x0(new A.aag(),s,s,t.f6)],t.Ds)
-return A.aKq(new A.zw("add_item_view",A.aSi(),"Flutter Demo",A.uF(s,A.aHH(B.a5,B.Ju),s,s,!0),!1,s),r)}}
+return A.aKq(new A.zw("splash_view",A.aSi(),"Flutter Demo",A.uF(s,A.aHH(B.a5,B.Ju),s,s,!0),!1,s),r)}}
 A.aag.prototype={
 $1(a){var s,r=A.b([],t.aU),q=A.b([],t._X),p=A.b([],t.Nd)
 $.aDD()
