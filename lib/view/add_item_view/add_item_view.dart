@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:plant_shop/utils/app_colors/app_colors.dart';
 import 'package:plant_shop/utils/view.dart';
 
@@ -26,7 +25,7 @@ class AddItemView extends StatelessWidget {
               height: 52,
               fit: BoxFit.contain,
             ),
-            MyText(title: "Add item",fontSize: 20,fontWeight: FontWeight.bold,color: AppColors.primaryColor,)
+            const MyText(title: "Add item",fontSize: 20,fontWeight: FontWeight.bold,color: AppColors.primaryColor,)
           ],
         ),
       ),
@@ -45,7 +44,7 @@ class AddItemView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: AppColors.primaryColor,width: 3)
                 ),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     MyText(title: "Click to select imaeg",fontSize: 16,),
@@ -55,9 +54,9 @@ class AddItemView extends StatelessWidget {
               ),
 
               SizedBox(height: height * 0.01,),
-              MyTextFormFeild(hintText: "Title"),
+              const MyTextFormFeild(hintText: "Title"),
               SizedBox(height: height * 0.02,),
-              MyTextFormFeild(hintText: "Descriition",maxLines: 4,),
+              const MyTextFormFeild(hintText: "Descriition",maxLines: 4,),
               SizedBox(height: height * 0.01,),
 
               /// add item button
