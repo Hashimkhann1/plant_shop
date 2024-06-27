@@ -1,4 +1,7 @@
 
+import 'package:plant_shop/view/buyer_info_view/buyer_info_view.dart';
+import 'package:plant_shop/view/cart_view/add_to_cart.dart';
+
 import '../view.dart';
 
 
@@ -24,6 +27,10 @@ class Routes {
         return MaterialPageRoute(builder: (context) => const NotificationView());
       case RoutesName.profileView:
         return MaterialPageRoute(builder: (context) => ProfileView());
+      case RoutesName.cart_view:
+        return MaterialPageRoute(builder: (context) => CartView());
+      case RoutesName.buyer_info_view:
+        return MaterialPageRoute(builder: (context) => BuyerInfoView());
       default:
         return MaterialPageRoute(builder: (context) => const Scaffold(
           body: Center(
