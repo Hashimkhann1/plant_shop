@@ -13,6 +13,8 @@ class RoutesName {
   static const String favouriteView = 'favourite_view';
   static const String notificationView = 'notification_view';
   static const String profileView = 'profile_view';
+  static const String cart_view = 'cart_view';
+  static const String buyer_info_view = 'buyer_info_view';
 
 
 
