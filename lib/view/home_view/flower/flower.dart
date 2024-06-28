@@ -27,7 +27,7 @@ class FlowerPlants extends StatelessWidget {
 
           return InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailView(itemImage: "${AppColors.flowerPlants[index]['plantImage']}${index+1}.jpeg",heroTag: "detailItem$index",)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailView(itemImage: "${AppColors.flowerPlants[index]['plantImage']}${index+1}.jpeg",heroTag: "detailItem$index",itemDetails: AppColors.flowerPlants[index],indexForImage: index + 1,)));
             },
             child: Card(
               color: AppColors.whiteColor,
