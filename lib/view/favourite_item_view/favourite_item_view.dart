@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_shop/utils/app_colors/app_colors.dart';
 import 'package:plant_shop/utils/responsive/responsive.dart';
+import 'package:plant_shop/utils/view.dart';
 import 'package:plant_shop/utils/widgets/my_appbar_widget.dart';
 import 'package:plant_shop/utils/widgets/my_text.dart';
 
@@ -80,7 +81,8 @@ class FavouriteItemView extends StatelessWidget {
                     ),
                   );
                     }),
-              )
+              ),
+
             ],
           ),
         ),
