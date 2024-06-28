@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:plant_shop/utils/app_colors/app_colors.dart';
 import 'package:plant_shop/utils/responsive/responsive.dart';
+import 'package:plant_shop/utils/widgets/my_appbar_widget.dart';
 import 'package:plant_shop/utils/widgets/my_text.dart';
 import 'package:plant_shop/utils/widgets/my_text_button.dart';
 
 class ItemDetailView extends StatelessWidget {
   final String itemImage;
+  final Map itemDetails;
   final Object? heroTag;
-  const ItemDetailView({super.key, required this.itemImage,this.heroTag});
+  final int indexForImage;
+  const ItemDetailView(
+      {super.key, required this.itemImage, this.heroTag, required this.itemDetails,required this.indexForImage});
 
   @override
   Widget build(BuildContext context) {
@@ -16,28 +20,37 @@ class ItemDetailView extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
+      appBar: MyAppBarWidget(
+        automaticallyImplyLeading: true,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: height * 0.04,
+            height: height * 0.02,
           ),
-
-          /// back icon button
-          IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back)),
 
           /// item Image
           Hero(
-            tag: heroTag!,
-            child: Center(child: Image.asset(itemImage,fit: BoxFit.contain,width: Responsive.isDesktop(context) ? width * 0.22 : width,height: Responsive.isDesktop(context) ? height * 0.44 : height * 0.36,))
-          ),
-
+              tag: heroTag!,
+              child: Center(
+                  child: Image.asset(
+                itemImage,
+                fit: BoxFit.contain,
+                width: Responsive.isDesktop(context) ? width * 0.22 : width,
+                height: Responsive.isDesktop(context)
+                    ? height * 0.44
+                    : height * 0.34,
+              ))),
 
           /// quantity
           Align(
             alignment: Alignment.centerRight,
             child: Container(
-              width: Responsive.isDesktop(context) || Responsive.isTablet(context)? width * 0.11 : width * 0.20,
+              width:
+                  Responsive.isDesktop(context) || Responsive.isTablet(context)
+                      ? width * 0.11
+                      : width * 0.20,
               margin: EdgeInsets.only(right: 12.0, top: 8.0),
               decoration: BoxDecoration(
                   color: AppColors.primaryColor,
@@ -46,7 +59,7 @@ class ItemDetailView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Icon(
-                    Icons.minimize,
+                    Icons.remove,
                     color: AppColors.whiteColor,
                   ),
                   MyText(
@@ -71,11 +84,13 @@ class ItemDetailView extends StatelessWidget {
               children: [
                 /// item name
                 MyText(
-                  title: "Item Name",
+                  title: itemDetails['plantName'].toString(),
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
                 ),
-                SizedBox(height: height * 0.01,),
+                SizedBox(
+                  height: height * 0.01,
+                ),
 
                 /// item stars
                 Row(
@@ -95,46 +110,70 @@ class ItemDetailView extends StatelessWidget {
 
                 /// item price
                 MyText(
-                  title: "\$58.30",
+                  title: "\$${itemDetails['price']}",
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
-                SizedBox(height: height * 0.01,),
+                SizedBox(
+                  height: height * 0.01,
+                ),
 
                 /// item descripition
                 Container(
                   width: Responsive.isDesktop(context) ? width * 0.54 : width,
                   child: MyText(
-                      title:
-                          "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual"
-                          "form of a document or a typeface without relying on meaningful content form of a document or a typeface without relying on meaningful content",
-                    fontSize: 16,color: Colors.grey.shade700,),
+                    title:
+                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual"
+                        "form of a document or a typeface without relying on meaningful content form of a document or a typeface without relying on meaningful content",
+                    fontSize: 16,
+                    color: Colors.grey.shade700,
+                  ),
                 ),
-                SizedBox(height: height * 0.015,),
+                SizedBox(
+                  height: height * 0.015,
+                ),
 
                 /// item sun light and temperature
                 Row(
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.sunny,color: AppColors.primaryColor,),
-                        SizedBox(width: width * 0.03,),
+                        Icon(
+                          Icons.sunny,
+                          color: AppColors.primaryColor,
+                        ),
+                        SizedBox(
+                          width: width * 0.03,
+                        ),
                         Column(
                           children: [
-                            MyText(title: "Sunlight",color: AppColors.primaryColor,),
+                            MyText(
+                              title: "Sunlight",
+                              color: AppColors.primaryColor,
+                            ),
                             MyText(title: "20-25%")
                           ],
                         )
                       ],
                     ),
-                    SizedBox(width: width * 0.04,),
+                    SizedBox(
+                      width: width * 0.04,
+                    ),
                     Row(
                       children: [
-                        Icon(Icons.wb_sunny_outlined,color: AppColors.primaryColor,),
-                        SizedBox(width: width * 0.02,),
+                        Icon(
+                          Icons.wb_sunny_outlined,
+                          color: AppColors.primaryColor,
+                        ),
+                        SizedBox(
+                          width: width * 0.02,
+                        ),
                         Column(
                           children: [
-                            MyText(title: "Sunlight",color: AppColors.primaryColor,),
+                            MyText(
+                              title: "Sunlight",
+                              color: AppColors.primaryColor,
+                            ),
                             MyText(title: "20-25%")
                           ],
                         )
@@ -142,10 +181,31 @@ class ItemDetailView extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: Responsive.isDesktop(context) ? height * 0.06 : height * 0.02,),
+                SizedBox(
+                  height: Responsive.isDesktop(context)
+                      ? height * 0.06
+                      : height * 0.02,
+                ),
 
                 /// Add to Cart Button
-                Center(child: MyTextButton(title: "Add to cart",fontSize: 20 , fontWeight: FontWeight.w500 ,backgroundColor: AppColors.primaryColor,textColor: AppColors.whiteColor,width: Responsive.isDesktop(context) ? width * 0.46 : width * 0.90,height: height * 0.06,borderRadius: 20,alignment: Alignment.center,))
+                Center(
+                    child: MyTextButton(
+                  title: "Add to cart",
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  backgroundColor: AppColors.primaryColor,
+                  textColor: AppColors.whiteColor,
+                  width: Responsive.isDesktop(context)
+                      ? width * 0.46
+                      : width * 0.90,
+                  height: height * 0.06,
+                  borderRadius: 20,
+                  alignment: Alignment.center,
+                      onTap: (){
+                    itemDetails['indexForImage'] = indexForImage.toString();
+                    print(itemDetails);
+                      },
+                ))
               ],
             ),
           )
