@@ -100,7 +100,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
                         children: const [
                           IndoorPlant(),
                           FlowerPlants(),
-                          MyText(title: "working on ui"),
+                          IndoorPlant(),
                         ]
                     ),
                   )
