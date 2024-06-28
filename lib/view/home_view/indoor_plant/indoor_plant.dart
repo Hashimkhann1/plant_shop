@@ -27,7 +27,9 @@ class IndoorPlant extends StatelessWidget {
 
           return InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailView(itemImage: "${AppColors.plants[index]['plantImage']}${index+1}.jpeg",heroTag: "detailItem$index",)));
+              // itemDetails: AppColors.plants[index]
+              print(AppColors.plants[index]);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailView(itemImage: "${AppColors.plants[index]['plantImage']}${index+1}.jpeg",heroTag: "detailItem$index",itemDetails: AppColors.plants[index],indexForImage: index + 1,)));
             },
             child: Card(
               color: AppColors.whiteColor,
