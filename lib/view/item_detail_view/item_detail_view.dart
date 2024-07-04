@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plant_shop/utils/app_colors/app_colors.dart';
 import 'package:plant_shop/utils/responsive/responsive.dart';
 import 'package:plant_shop/utils/widgets/my_appbar_widget.dart';
 import 'package:plant_shop/utils/widgets/my_text.dart';
 import 'package:plant_shop/utils/widgets/my_text_button.dart';
+import 'package:plant_shop/view_model/bloc/cart_items_bloc/cart_items_bloc/cart_items_bloc.dart';
+import 'package:plant_shop/view_model/bloc/cart_items_bloc/cart_items_bloc_event/cart_items_bloc_event.dart';
+import 'package:plant_shop/view_model/bloc/cart_items_bloc/cart_items_bloc_state/cart_items_bloc_state.dart';
 
 class ItemDetailView extends StatelessWidget {
   final String itemImage;
@@ -20,7 +24,7 @@ class ItemDetailView extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      appBar: MyAppBarWidget(
+      appBar: const MyAppBarWidget(
         automaticallyImplyLeading: true,
       ),
       body: Column(
@@ -51,11 +55,11 @@ class ItemDetailView extends StatelessWidget {
                   Responsive.isDesktop(context) || Responsive.isTablet(context)
                       ? width * 0.11
                       : width * 0.20,
-              margin: EdgeInsets.only(right: 12.0, top: 8.0),
+              margin: const EdgeInsets.only(right: 12.0, top: 8.0),
               decoration: BoxDecoration(
                   color: AppColors.primaryColor,
                   borderRadius: BorderRadius.circular(20)),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Icon(
@@ -93,7 +97,7 @@ class ItemDetailView extends StatelessWidget {
                 ),
 
                 /// item stars
-                Row(
+                const Row(
                   children: [
                     Icon(
                       Icons.star,
@@ -138,14 +142,14 @@ class ItemDetailView extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.sunny,
                           color: AppColors.primaryColor,
                         ),
                         SizedBox(
                           width: width * 0.03,
                         ),
-                        Column(
+                        const Column(
                           children: [
                             MyText(
                               title: "Sunlight",
@@ -161,14 +165,14 @@ class ItemDetailView extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.wb_sunny_outlined,
                           color: AppColors.primaryColor,
                         ),
                         SizedBox(
                           width: width * 0.02,
                         ),
-                        Column(
+                        const Column(
                           children: [
                             MyText(
                               title: "Sunlight",
@@ -189,23 +193,29 @@ class ItemDetailView extends StatelessWidget {
 
                 /// Add to Cart Button
                 Center(
-                    child: MyTextButton(
-                  title: "Add to cart",
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                  backgroundColor: AppColors.primaryColor,
-                  textColor: AppColors.whiteColor,
-                  width: Responsive.isDesktop(context)
-                      ? width * 0.46
-                      : width * 0.90,
-                  height: height * 0.06,
-                  borderRadius: 20,
-                  alignment: Alignment.center,
-                      onTap: (){
-                    itemDetails['indexForImage'] = indexForImage.toString();
-                    print(itemDetails);
-                      },
-                ))
+                    child: BlocBuilder<CartItemsBloc , CartItemsBlocState>(builder: (context , state){
+                      return MyTextButton(
+                        title: "Add to cart",
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        backgroundColor: AppColors.primaryColor,
+                        textColor: AppColors.whiteColor,
+                        width: Responsive.isDesktop(context)
+                            ? width * 0.46
+                            : width * 0.90,
+                        height: height * 0.06,
+                        borderRadius: 20,
+                        alignment: Alignment.center,
+                        onTap: (){
+                          itemDetails['indexForImage'] = indexForImage.toString();
+
+                          Map<String, String> formattedItemDetails = itemDetails.map((key, value) => MapEntry(key.toString(), value.toString()));
+                          // print(itemDetails);
+                          context.read<CartItemsBloc>().add(AddItemToCart(formattedItemDetails));
+                        },
+                      );
+                    },)
+                )
               ],
             ),
           )
