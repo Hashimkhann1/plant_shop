@@ -16,11 +16,14 @@ class CartItemsBloc extends Bloc<CartItemsBlocEvent , CartItemsBlocState> {
   }
 
   void _addItemToCart(AddItemToCart event , Emitter emit) {
-    cartItems.add(event.cartItem);
+    cartItems.add(event.cartItem as Map<String , String>);
     emit(state.copyWith(cartItems: List.from(cartItems)));
   }
 
-  void _removeItemFromCart(RemoveItemFromCart event , Emitter emit) {}
+  void _removeItemFromCart(RemoveItemFromCart event , Emitter emit) {
+    cartItems.remove(event.cartItem as Map<String , String>);
+    emit(state.copyWith(cartItems: List.from(cartItems)));
+  }
 
 
 }
