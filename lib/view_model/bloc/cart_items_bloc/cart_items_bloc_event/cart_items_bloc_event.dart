@@ -14,4 +14,7 @@ class AddItemToCart extends CartItemsBlocEvent {
   AddItemToCart(this.cartItem);
 }
 
-class RemoveItemFromCart extends CartItemsBlocEvent {}
+class RemoveItemFromCart extends CartItemsBlocEvent {
+  final Map<String , String> cartItem;
+  RemoveItemFromCart(this.cartItem);
+}
